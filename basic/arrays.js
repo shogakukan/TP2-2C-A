@@ -72,8 +72,17 @@ const inventors = [
 
 function segundoMayor(array){
     // determinar el segundo mayor
-    array.sort();
-    return array[array.length-2];
+    array.sort((a, b) => b - a); //orden descendente
+    let i = 0;
+    let distintos = false;
+    while (i < array.length-1 && !distintos){
+        if (array[i] === array [i+1]){
+            i++; 
+        } else {
+            distintos = true;
+        }
+    }
+    return array[i+1]; //si todos los numeros son iguales, me devuelve undefined ¿está ok eso?
 }
 
 console.log(segundoMayor([2,4,5,6]) === 5);
