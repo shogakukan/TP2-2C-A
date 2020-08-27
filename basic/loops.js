@@ -9,12 +9,27 @@ const inventors = [
   ];
 
 // while
-let i = 0
-while (i < inventors.length) {
-    console.log(inventors[i]);
-    i ++;
-}
+// let i = 0
+// while (i < inventors.length) {
+//     console.log(inventors[i]);
+//     i ++;
+// }
 
 // Ejercicio: dada una cadena por ejemplo 'javascriptloops' imprimir
 // primero todas las vocales y a continuacion las consonantes
 // aaioojvscr...... 
+let cadena = "javascriptloops";
+cadena = cadena.split("");
+
+let respVocales = "";
+let respConsonantes = "";
+let vocales = ["a","e","i","o","u"];
+for (let letra of cadena){
+  if (vocales.includes(letra)){
+    respVocales += letra;
+  } else {
+    respConsonantes += letra;
+  }
+}
+console.log(respVocales+respConsonantes);
+
