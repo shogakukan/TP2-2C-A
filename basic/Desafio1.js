@@ -28,3 +28,24 @@ const str = `<ul>
 // Fecha de solucio: Miercoles 2 de SEP
 
 // Modalidad de entrega. Pull Request.
+//console.log(str);
+let tiempos = str.split('"');
+let videos = [];
+tiempos.filter(parte => parte.includes(":"))
+  .forEach(tiempo => {
+    tiempo = tiempo.split(":");
+    videos.push({ tiempo: { minutos: Number.parseInt(tiempo[0]), segundos: Number.parseInt(tiempo[1]) } })
+  });
+
+let tipos = str.split('">').join("</li>").split("</li>");
+
+let j = 0;
+for (let i = 1; i < tipos.length - 1; i = i + 2) {
+  videos[j].tipo = tipos[i];
+  j++;
+}
+
+let tipoBuscado = 'Redux Video';
+let suma = 0;
+videos.filter(video => video.tipo === tipoBuscado).forEach(video => suma += video.tiempo.minutos * 60 + video.tiempo.segundos)
+console.log("La suma buscada es de", suma, "segundos");
